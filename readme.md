@@ -1,3 +1,5 @@
+This is a vanilla Js version of what you see below. jQuery is still included for testing purposes, it's not used. I do this to practice my Javascript skills and to show the world that you don't need jQuery to do awesome stuff anymore.
+
 # Parallax On The Web - Project Files
 
 Video Series [ for free on YouTube](https://www.youtube.com/playlist?list=PLqGj3iMvMa4IyCbhul-PdeiDqmh4ooJzk) on the [DevTips](https://www.youtube.com/user/DevTipsForDesigners) Channel
