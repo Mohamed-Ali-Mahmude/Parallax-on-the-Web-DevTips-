@@ -14,15 +14,18 @@ window.addEventListener('scroll', function(){
     transform = 'translate(0px, -'+ wScroll /40 +'%)'
   ;
 
-  if(wScroll > $('.clothes-pics').offset().top - ($(window).height() / 1.2)) {
+  var figures = document.querySelectorAll('.clothes-pics figure');
 
-    $('.clothes-pics figure').each(function(i){
+  function showPic(i) {
+    setTimeout(function(){
+      figures[i].classList.add('is-showing');
+    }, 150 * (i+1));
+  }
 
-      setTimeout(function(){
-        $('.clothes-pics figure').eq(i).addClass('is-showing');
-      }, 150 * (i+1));
-    });
-
+  if(wScroll > document.querySelector('.clothes-pics').getBoundingClientRect().top + document.body.scrollTop - (window.innerHeight / 1.2)) {
+    for(var i = 0; i < figures.length; i++) {
+      showPic(i);
+    }
   }
 
 });
