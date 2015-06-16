@@ -1,35 +1,38 @@
-var pContainerHeight = $('.bird-box').height();
+var pContainerHeight = document.querySelector('.bird-box').scrollHeight;
 
-$(window).scroll(function(){
+window.addEventListener('scroll', function(){
 
-  var wScroll = $(this).scrollTop();
+  var wScroll = this.pageYOffset;
 
   if (wScroll <= pContainerHeight) {
 
-    $('.logo').css({
-      'transform' : 'translate(0px, '+ wScroll /2 +'%)'
-    });
+    document.querySelector('.logo').style.
+      transform = 'translate(0px, '+ wScroll /2 +'%)';
 
-    $('.back-bird').css({
-      'transform' : 'translate(0px, '+ wScroll /4 +'%)'
-    });
+    document.querySelector('.back-bird').style.
+      transform = 'translate(0px, '+ wScroll /4 +'%)';
 
-    $('.fore-bird').css({
-      'transform' : 'translate(0px, -'+ wScroll /40 +'%)'
-    });
+    document.querySelector('.fore-bird').style.
+      transform = 'translate(0px, -'+ wScroll /40 +'%)';
 
   }
 
 
   // Landing Elements
-  if(wScroll > $('.clothes-pics').offset().top - ($(window).height() / 1.2)) {
 
-    $('.clothes-pics figure').each(function(i){
+  var figures = document.querySelectorAll('.clothes-pics figure');
 
-      setTimeout(function(){
-        $('.clothes-pics figure').eq(i).addClass('is-showing');
-      }, (700 * (Math.exp(i * 0.14))) - 700);
-    });
+  function showPic(i) {
+    setTimeout(function(){
+      figures[i].classList.add('is-showing');
+    }, (700 * (Math.exp(i * 0.14)) - 700));
+  }
+
+  if(wScroll > document.querySelector('.clothes-pics').getBoundingClientRect().top + document.body.scrollTop - (window.innerHeight / 1.2)) {
+
+    for(var i = 0; i < figures.length; i++) {
+      showPic(i);
+    }
 
   }
 
